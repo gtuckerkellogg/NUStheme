@@ -12,7 +12,7 @@
 % \iffalse
 %<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamerfontthememetropolis}[2017/01/23 Metropolis font theme]
+\ProvidesPackage{beamerfontthemeNUS}[2017/01/23 NUS font theme]
 %</package>
 % \fi
 % \CheckSum{0}
@@ -92,48 +92,34 @@
 % also fails, a warning will be displayed and the standard fonts will be used.
 %
 %    \begin{macrocode}
-  \iffontsavailable{Fira Sans Light,%
-                    Fira Sans Light Italic,%
-                    Fira Sans,%
-                    Fira Sans Italic}%
+\iffontsavailable{Myriad Pro}%
   {%
-    \setsansfont[ItalicFont={Fira Sans Light Italic},%
-                 BoldFont={Fira Sans},%
-                 BoldItalicFont={Fira Sans Italic}]%
-                {Fira Sans Light}%
+    \setsansfont[]{Myriad Pro}%
+    \usepackage{mdsymbol}
   }{%
-    \iffontsavailable{Fira Sans Light OT,%
-                      Fira Sans Light Italic OT,%
-                      Fira Sans OT,%
-                      Fira Sans Italic OT}%
-    {%
-      \setsansfont[ItalicFont={Fira Sans Light Italic OT},%
-                   BoldFont={Fira Sans OT},%
-                   BoldItalicFont={Fira Sans Italic OT}]%
-                  {Fira Sans Light OT}%
-    }{%
-      \PackageWarning{beamerthememetropolis}{%
-        Could not find Fira Sans fonts%
+      \PackageWarning{beamerthemeNUS}{%
+        Could not find Myriad Pro fonts%
       }
     }
-  }
-  \iffontsavailable{Fira Mono, Fira Mono Bold}{%
-    \setmonofont[BoldFont={Fira Mono Medium}]{Fira Mono}%
+\iffontsavailable{DejaVu Sans Mono}%
+{%
+  \setmonofont[Mapping=tex-text,Scale=0.8]{DejaVu Sans Mono}%
   }{%
-    \iffontsavailable{Fira Mono OT, Fira Mono Bold OT}{%
-      \setmonofont[BoldFont={Fira Mono Medium OT}]{Fira Mono OT}%
-    }{%
-      \PackageWarning{beamerthememetropolis}{%
-        Could not find Fira Mono fonts%
+      \PackageWarning{beamerthemeNUS}{%
+        Could not find DejaVu Sans Mono fonts%
       }
     }
-  }
   \AtBeginEnvironment{tabular}{%
     \addfontfeature{Numbers={Monospaced}}%
   }
 }{%
-  \PackageWarning{beamerthememetropolis}{%
-    You need to compile with XeLaTeX or LuaLaTeX to use the Fira fonts%
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage[lf]{MyriadPro}
+  \usepackage{mdsymbol}
+  \usepackage[scaled=0.8]{beramono}
+  \PackageWarning{beamerthemeNUS}{%
+    You need to compile with XeLaTeX or LuaLaTeX to use the Myriad Pro fonts%
   }
 }
 %    \end{macrocode}
@@ -144,6 +130,7 @@
 %
 %
 %
+
 % \subsubsection{General font definitions}
 %
 %    \begin{macrocode}
@@ -184,27 +171,27 @@
 %    Controls the format of the title.
 %    \begin{macrocode}
 \pgfkeys{
-  /metropolis/font/titleformat title/.cd,
+  /NUS/font/titleformat title/.cd,
     .is choice,
     regular/.code={%
-      \let\metropolis@titleformat\@empty%
+      \let\NUS@titleformat\@empty%
       \setbeamerfont{title}{shape=\normalfont}%
     },
     smallcaps/.code={%
-      \let\metropolis@titleformat\@empty%
+      \let\NUS@titleformat\@empty%
       \setbeamerfont{title}{shape=\scshape}%
     },
     allsmallcaps/.code={%
-      \let\metropolis@titleformat\lowercase%
+      \let\NUS@titleformat\lowercase%
       \setbeamerfont{title}{shape=\scshape}%
-      \PackageWarning{beamerthememetropolis}{%
+      \PackageWarning{beamerthemeNUS}{%
         Be aware that titleformat title=allsmallcaps can lead to problems%
       }
     },
     allcaps/.code={%
-      \let\metropolis@titleformat\uppercase%
+      \let\NUS@titleformat\uppercase%
       \setbeamerfont{title}{shape=\normalfont}
-      \PackageWarning{beamerthememetropolis}{%
+      \PackageWarning{beamerthemeNUS}{%
         Be aware that titleformat title=allcaps can lead to problems%
       }
     },
@@ -216,27 +203,27 @@
 %    Control the format of the subtitle.
 %    \begin{macrocode}
 \pgfkeys{
-  /metropolis/font/titleformat subtitle/.cd,
+  /NUS/font/titleformat subtitle/.cd,
     .is choice,
     regular/.code={%
-      \let\metropolis@subtitleformat\@empty%
+      \let\NUS@subtitleformat\@empty%
       \setbeamerfont{subtitle}{shape=\normalfont}%
     },
     smallcaps/.code={%
-      \let\metropolis@subtitleformat\@empty%
+      \let\NUS@subtitleformat\@empty%
       \setbeamerfont{subtitle}{shape=\scshape}%
     },
     allsmallcaps/.code={%
-      \let\metropolis@subtitleformat\lowercase%
+      \let\NUS@subtitleformat\lowercase%
       \setbeamerfont{subtitle}{shape=\scshape}%
-      \PackageWarning{beamerthememetropolis}{%
+      \PackageWarning{beamerthemeNUS}{%
         Be aware that titleformat subtitle=allsmallcaps can lead to problems%
       }
     },
     allcaps/.code={%
-      \let\metropolis@subtitleformat\uppercase%
+      \let\NUS@subtitleformat\uppercase%
       \setbeamerfont{subtitle}{shape=\normalfont}%
-      \PackageWarning{beamerthememetropolis}{%
+      \PackageWarning{beamerthemeNUS}{%
         Be aware that titleformat subtitle=allcaps can lead to problems%
       }
     },
@@ -248,27 +235,27 @@
 %    Controls the format of the section title.
 %    \begin{macrocode}
 \pgfkeys{
-  /metropolis/font/titleformat section/.cd,
+  /NUS/font/titleformat section/.cd,
     .is choice,
     regular/.code={%
-      \let\metropolis@sectiontitleformat\@empty%
+      \let\NUS@sectiontitleformat\@empty%
       \setbeamerfont{section title}{shape=\normalfont}%
     },
     smallcaps/.code={%
-      \let\metropolis@sectiontitleformat\@empty%
+      \let\NUS@sectiontitleformat\@empty%
       \setbeamerfont{section title}{shape=\scshape}%
     },
     allsmallcaps/.code={%
-      \let\metropolis@sectiontitleformat\MakeLowercase%
+      \let\NUS@sectiontitleformat\MakeLowercase%
       \setbeamerfont{section title}{shape=\scshape}%
-      \PackageWarning{beamerthememetropolis}{%
+      \PackageWarning{beamerthemeNUS}{%
         Be aware that titleformat section=allsmallcaps can lead to problems%
       }
     },
     allcaps/.code={%
-      \let\metropolis@sectiontitleformat\MakeUppercase%
+      \let\NUS@sectiontitleformat\MakeUppercase%
       \setbeamerfont{section title}{shape=\normalfont}%
-      \PackageWarning{beamerthememetropolis}{%
+      \PackageWarning{beamerthemeNUS}{%
         Be aware that titleformat section=allcaps can lead to problems%
       }
     },
@@ -280,27 +267,27 @@
 %    Control the format of the frame title.
 %    \begin{macrocode}
 \pgfkeys{
-  /metropolis/font/titleformat frame/.cd,
+  /NUS/font/titleformat frame/.cd,
     .is choice,
     regular/.code={%
-      \let\metropolis@frametitleformat\@empty%
+      \let\NUS@frametitleformat\@empty%
       \setbeamerfont{frametitle}{shape=\normalfont}%
     },
     smallcaps/.code={%
-      \let\metropolis@frametitleformat\@empty%
+      \let\NUS@frametitleformat\@empty%
       \setbeamerfont{frametitle}{shape=\scshape}%
     },
     allsmallcaps/.code={%
-      \let\metropolis@frametitleformat\MakeLowercase%
+      \let\NUS@frametitleformat\MakeLowercase%
       \setbeamerfont{frametitle}{shape=\scshape}%
-      \PackageWarning{beamerthememetropolis}{%
+      \PackageWarning{beamerthemeNUS}{%
         Be aware that titleformat frame=allsmallcaps can lead to problems%
       }
     },
     allcaps/.code={%
-      \let\metropolis@frametitleformat\MakeUppercase%
+      \let\NUS@frametitleformat\MakeUppercase%
       \setbeamerfont{frametitle}{shape=\normalfont}
-      \PackageWarning{beamerthememetropolis}{%
+      \PackageWarning{beamerthemeNUS}{%
         Be aware that titleformat frame=allcaps can lead to problems%
       }
     },
@@ -313,7 +300,7 @@
 %    declaration, where \LaTeX{} automatically removes all spaces.
 %    \begin{macrocode}
 \pgfkeys{
-  /metropolis/font/.cd,
+  /NUS/font/.cd,
   titleformattitle/.code=\pgfkeysalso{titleformat title=#1},
   titleformatsubtitle/.code=\pgfkeysalso{titleformat subtitle=#1},
   titleformatsection/.code=\pgfkeysalso{titleformat section=#1},
@@ -322,11 +309,11 @@
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{\metropolis@font@setdefaults}
+% \begin{macro}{\NUS@font@setdefaults}
 %    Sets default values for font theme options.
 %    \begin{macrocode}
-\newcommand{\metropolis@font@setdefaults}{
-  \pgfkeys{/metropolis/font/.cd,
+\newcommand{\NUS@font@setdefaults}{
+  \pgfkeys{/NUS/font/.cd,
     titleformat title=regular,
     titleformat subtitle=regular,
     titleformat section=regular,
@@ -339,10 +326,10 @@
 % We first define hooks to change the case format of the titles.
 %
 %    \begin{macrocode}
-\def\metropolis@titleformat#1{#1}
-\def\metropolis@subtitleformat#1{#1}
-\def\metropolis@sectiontitleformat#1{#1}
-\def\metropolis@frametitleformat#1{#1}
+\def\NUS@titleformat#1{#1}
+\def\NUS@subtitleformat#1{#1}
+\def\NUS@sectiontitleformat#1{#1}
+\def\NUS@frametitleformat#1{#1}
 %    \end{macrocode}
 %
 % To make the uppercase and lowercase macros work in the title, subtitle, etc.,
@@ -354,62 +341,62 @@
 %    \begin{macrocode}
 \patchcmd{\beamer@title}%
   {\def\inserttitle{#2}}%
-  {\def\inserttitle{\metropolis@titleformat{#2}}}%
+  {\def\inserttitle{\NUS@titleformat{#2}}}%
   {}%
-  {\PackageError{beamerfontthememetropolis}{Patching title failed}\@ehc}
+  {\PackageError{beamerfontthemeNUS}{Patching title failed}\@ehc}
 \patchcmd{\beamer@subtitle}%
   {\def\insertsubtitle{#2}}%
-  {\def\insertsubtitle{\metropolis@subtitleformat{#2}}}%
+  {\def\insertsubtitle{\NUS@subtitleformat{#2}}}%
   {}%
-  {\PackageError{beamerfontthememetropolis}{Patching subtitle failed}\@ehc}
+  {\PackageError{beamerfontthemeNUS}{Patching subtitle failed}\@ehc}
 \patchcmd{\sectionentry}
   {\def\insertsectionhead{#2}}
-  {\def\insertsectionhead{\metropolis@sectiontitleformat{#2}}}
+  {\def\insertsectionhead{\NUS@sectiontitleformat{#2}}}
   {}
-  {\PackageError{beamerfontthememetropolis}{Patching section title failed}\@ehc}
+  {\PackageError{beamerfontthemeNUS}{Patching section title failed}\@ehc}
 \@tempswafalse
 \patchcmd{\beamer@section}
   {\edef\insertsectionhead{\noexpand\hyperlink{Navigation\the\c@page}{\unexpanded{#1}}}}
   {\edef\insertsectionhead{\noexpand\hyperlink{Navigation\the\c@page}{%
-    \noexpand\metropolis@sectiontitleformat{\unexpanded{#1}}}}}
+    \noexpand\NUS@sectiontitleformat{\unexpanded{#1}}}}}
   {\@tempswatrue}
   {}
 \patchcmd{\beamer@section}
   {\def\insertsectionhead{\hyperlink{Navigation\the\c@page}{#1}}}
   {\def\insertsectionhead{\hyperlink{Navigation\the\c@page}{%
-    \metropolis@sectiontitleformat{#1}}}}
+    \NUS@sectiontitleformat{#1}}}}
   {\@tempswatrue}
   {}
 \patchcmd{\beamer@section}
   {\protected@edef\insertsectionhead{\noexpand\hyperlink{Navigation\the\c@page}{#1}}}
   {\protected@edef\insertsectionhead{\noexpand\hyperlink{Navigation\the\c@page}{%
-    \noexpand\metropolis@sectiontitleformat{#1}}}}
+    \noexpand\NUS@sectiontitleformat{#1}}}}
   {\@tempswatrue}
   {}
 \if@tempswa\else
-  \PackageError{beamerfontthememetropolis}{Patching section title failed}\@ehc
+  \PackageError{beamerfontthemeNUS}{Patching section title failed}\@ehc
 \fi
 \@tempswafalse
 \patchcmd{\beamer@subsection}
   {\edef\insertsubsectionhead{\noexpand\hyperlink{Navigation\the\c@page}{\unexpanded{#1}}}}
   {\edef\insertsubsectionhead{\noexpand\hyperlink{Navigation\the\c@page}{%
-    \noexpand\metropolis@sectiontitleformat{\unexpanded{#1}}}}}
+    \noexpand\NUS@sectiontitleformat{\unexpanded{#1}}}}}
   {\@tempswatrue}
   {}
 \patchcmd{\beamer@subsection}
   {\def\insertsubsectionhead{\hyperlink{Navigation\the\c@page}{#1}}}
   {\def\insertsubsectionhead{\hyperlink{Navigation\the\c@page}{%
-    \metropolis@sectiontitleformat{#1}}}}
+    \NUS@sectiontitleformat{#1}}}}
   {\@tempswatrue}
   {}
 \patchcmd{\beamer@subsection}
   {\protected@edef\insertsubsectionhead{\noexpand\hyperlink{Navigation\the\c@page}{#1}}}
   {\protected@edef\insertsubsectionhead{\noexpand\hyperlink{Navigation\the\c@page}{%
-    \noexpand\metropolis@sectiontitleformat{#1}}}}
+    \noexpand\NUS@sectiontitleformat{#1}}}}
   {\@tempswatrue}
   {}
 \if@tempswa\else
-  \PackageError{beamerfontthememetropolis}{Patching section title failed}\@ehc
+  \PackageError{beamerfontthemeNUS}{Patching section title failed}\@ehc
 \fi
 %    \end{macrocode}
 %
@@ -425,14 +412,14 @@
     \gdef\beamer@shortframetitle{#1}%
     }}
   {{%
-      \gdef\insertframetitle{{\metropolis@frametitleformat{#2}\ifnum%
+      \gdef\insertframetitle{{\NUS@frametitleformat{#2}\ifnum%
       \beamer@autobreakcount>0\relax{}\space%
       \usebeamertemplate*{frametitle continuation}\fi}}%
     \gdef\beamer@frametitle{#2}%
     \gdef\beamer@shortframetitle{#1}%
     }}
   {}
-  {\PackageError{beamerfontthememetropolis}{Patching frame title failed}\@ehc}
+  {\PackageError{beamerfontthemeNUS}{Patching frame title failed}\@ehc}
 %    \end{macrocode}
 %
 %
@@ -440,8 +427,8 @@
 % \subsubsection{Process package options}
 %
 %    \begin{macrocode}
-\metropolis@font@setdefaults
-\ProcessPgfPackageOptions{/metropolis/font}
+\NUS@font@setdefaults
+\ProcessPgfPackageOptions{/NUS/font}
 %    \end{macrocode}
 % \iffalse
 %</package>

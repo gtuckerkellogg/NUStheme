@@ -12,7 +12,7 @@
 % \iffalse
 %<*package>
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{beamercolorthememetropolis}[2017/01/23 Metropolis color theme]
+\ProvidesPackage{beamercolorthemeNUS}[2017/01/23 NUS color theme]
 %</package>
 % \fi
 % \CheckSum{0}
@@ -39,10 +39,10 @@
 %    |theorem| and |example|.
 %    \begin{macrocode}
 \pgfkeys{
-  /metropolis/color/block/.cd,
+  /NUS/color/block/.cd,
     .is choice,
-    transparent/.code=\metropolis@block@transparent,
-    fill/.code=\metropolis@block@fill,
+    transparent/.code=\NUS@block@transparent,
+    fill/.code=\NUS@block@fill,
 }
 %    \end{macrocode}
 % \end{macro}
@@ -52,19 +52,19 @@
 %    of the reverse.
 %    \begin{macrocode}
 \pgfkeys{
-  /metropolis/color/background/.cd,
+  /NUS/color/background/.cd,
     .is choice,
-    dark/.code=\metropolis@colors@dark,
-    light/.code=\metropolis@colors@light,
+    dark/.code=\NUS@colors@dark,
+    light/.code=\NUS@colors@light,
 }
 %    \end{macrocode}
 % \end{macro}
 %
-% \begin{macro}{\metropolis@color@setdefaults}
+% \begin{macro}{\NUS@color@setdefaults}
 %    Sets default values for color theme options.
 %    \begin{macrocode}
-\newcommand{\metropolis@color@setdefaults}{
-  \pgfkeys{/metropolis/color/.cd,
+\newcommand{\NUS@color@setdefaults}{
+  \pgfkeys{/NUS/color/.cd,
     background=light,
     block=transparent,
   }
@@ -78,8 +78,8 @@
 %
 %    \begin{macrocode}
 \definecolor{mDarkBrown}{HTML}{604c38}
-\definecolor{mDarkTeal}{HTML}{23373b}
-\definecolor{mLightBrown}{HTML}{EB811B}
+\definecolor{NUSblue}{HTML}{003D7C}
+\definecolor{NUSorange}{HTML}{EF7C00}
 \definecolor{mLightGreen}{HTML}{14B03D}
 %    \end{macrocode}
 %
@@ -91,21 +91,21 @@
 % |alerted text|, and |example text|.
 %
 %    \begin{macrocode}
-\newcommand{\metropolis@colors@dark}{
+\newcommand{\NUS@colors@dark}{
   \setbeamercolor{normal text}{%
     fg=black!2,
-    bg=mDarkTeal
+    bg=NUSblue
   }
   \usebeamercolor[fg]{normal text}
 }
-\newcommand{\metropolis@colors@light}{
+\newcommand{\NUS@colors@light}{
   \setbeamercolor{normal text}{%
-    fg=mDarkTeal,
+    fg=NUSblue,
     bg=black!2
   }
 }
 \setbeamercolor{alerted text}{%
-  fg=mLightBrown
+  fg=NUSorange
 }
 \setbeamercolor{example text}{%
   fg=mLightGreen
@@ -140,6 +140,13 @@
   fg=normal text.bg,
   bg=normal text.fg
 }
+
+\setbeamercolor{palette secondary}{%
+  use=normal text,
+  fg=alerted text.fg,
+  bg=normal text.fg
+}
+
 \setbeamercolor{frametitle}{%
   use=palette primary,
   parent=palette primary
@@ -162,6 +169,18 @@
   use=progress bar,
   parent=progress bar
 }
+% \setbeamercolor{footline}{%
+%   use=palette primary,
+%   parent=palette primary
+% }
+\setbeamercolor{footline foot}{%
+  bg=NUSorange
+}
+\setbeamercolor{headline head}{%
+  bg=NUSorange
+}
+
+
 \setbeamercolor{progress bar in head/foot}{%
   use=progress bar,
   parent=progress bar
@@ -179,7 +198,7 @@
 % if changing colors mid-presentation.
 %
 %    \begin{macrocode}
-\newcommand{\metropolis@block@transparent}{
+\newcommand{\NUS@block@transparent}{
   \setbeamercolor{block title}{%
     use=normal text,
     fg=normal text.fg,
@@ -189,7 +208,7 @@
     bg=
   }
 }
-\newcommand{\metropolis@block@fill}{
+\newcommand{\NUS@block@fill}{
   \setbeamercolor{block title}{%
     use=normal text,
     fg=normal text.fg,
@@ -237,8 +256,8 @@
 % \subsubsection{Process package options}
 %
 %    \begin{macrocode}
-\metropolis@color@setdefaults
-\ProcessPgfPackageOptions{/metropolis/color}
+\NUS@color@setdefaults
+\ProcessPgfPackageOptions{/NUS/color}
 %    \end{macrocode}
 %
 %    \begin{macrocode}

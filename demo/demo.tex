@@ -1,6 +1,6 @@
 \documentclass[10pt]{beamer}
 
-\usetheme{metropolis}
+\usetheme{NUS}
 \usepackage{appendixnumberbeamer}
 
 \usepackage{booktabs}
@@ -10,16 +10,17 @@
 \usepgfplotslibrary{dateplot}
 
 \usepackage{xspace}
-\newcommand{\themename}{\textbf{\textsc{metropolis}}\xspace}
+\newcommand{\themename}{\textbf{\textsc{NUS}}\xspace}
 
-\title{Metropolis}
-\subtitle{A modern beamer theme}
+\title{NUS}
+\subtitle{A beamer theme for the National University of Singapore}
 \date{\today}
-\author{Matthias Vogelgesang}
+\author{Greg Tucker-Kellogg (but mostly Matthias Vogelgesang)}
 \institute{Center for modern beamer themes}
-% \titlegraphic{\hfill\includegraphics[height=1.5cm]{logo.pdf}}
-
+\IfFileExists{nus-logo-color.pdf}{\titlegraphic{\hfill\includegraphics[height=0.8cm]{nus-logo-color.pdf}}}{}
 \begin{document}
+
+\setbeamertemplate{frame footer}[copyright]
 
 \maketitle
 
@@ -30,7 +31,7 @@
 
 \section{Introduction}
 
-\begin{frame}[fragile]{Metropolis}
+\begin{frame}[fragile]{NUS}
 
   The \themename theme is a Beamer theme with minimal visual noise
   inspired by the \href{https://github.com/hsrmbeamertheme/hsrmbeamertheme}{\textsc{hsrm} Beamer
@@ -39,7 +40,7 @@
   Enable the theme by loading
 
   \begin{verbatim}    \documentclass{beamer}
-    \usetheme{metropolis}\end{verbatim}
+    \usetheme{NUS}\end{verbatim}
 
   Note, that you have to have Mozilla's \emph{Fira Sans} font and XeTeX
   installed to enjoy this wonderful typography.
@@ -54,7 +55,7 @@
 
 \section{Title formats}
 
-\begin{frame}{Metropolis title formats}
+\begin{frame}{NUS title formats}
 	\themename supports 4 different title formats:
 	\begin{itemize}
 		\item Regular
@@ -128,12 +129,20 @@ or show \textbf{bold} results.\end{verbatim}
   \end{itemize}
 \end{frame}
 
+
 \begin{frame}{Lists}
   \begin{columns}[T,onlytextwidth]
     \column{0.33\textwidth}
       Items
       \begin{itemize}
-        \item Milk \item Eggs \item Potatoes
+      \item Milk \item Eggs
+        \begin{itemize}
+        \item first \item second
+      \end{itemize}
+
+
+
+      \item Potatoes
       \end{itemize}
 
     \column{0.33\textwidth}
